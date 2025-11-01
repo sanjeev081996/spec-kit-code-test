@@ -1,50 +1,46 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Vet2 Dynamic Web App Constitution
 
-## Core Principles
+## Core Principles (SOLID)
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Single Responsibility Principle (SRP)
+Each module/class/component has exactly one reason to change. Boundaries are explicit: view logic, domain rules, and data access are separated. Avoid “god” services/components; extract cohesive functions; keep files small and purpose-driven.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Open/Closed Principle (OCP)
+Software entities are open for extension but closed for modification. Prefer extension points (interfaces, composition, events, configuration, feature flags) over editing existing behavior. New features integrate via strategy/adapters/plugins rather than editing core flows.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Liskov Substitution Principle (LSP)
+Subtypes must be substitutable for their base types without breaking expectations. Do not strengthen preconditions or weaken postconditions. Preserve invariants and behavior. Validate through contract tests against shared interfaces and public APIs.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Interface Segregation Principle (ISP)
+Prefer many small, focused interfaces over fat ones. Clients should not depend on methods they do not use. In the web stack: segregate service interfaces, keep UI props minimal, design lean DTOs, and avoid catch‑all utility services.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Dependency Inversion Principle (DIP)
+High‑level policies do not depend on low‑level details; both depend on abstractions. Use dependency injection where reasonable, pass dependencies explicitly, and isolate framework/infra behind ports/adapters to keep the domain independent and testable.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Architecture & Tech Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- Layering: presentation (UI), application (use cases), domain (business rules), infrastructure (HTTP, DB, cache). Domain has no framework imports.
+- Modularity: feature‑based folders; shared kernels are small and stable; avoid cyclic dependencies.
+- API design: clear contracts, versioned endpoints/schemas, backward compatibility by default; prefer idempotent operations for mutations where applicable.
+- State & data: normalize client state; cache with explicit invalidation; avoid hidden global state.
+- Errors & observability: structured logs, correlation IDs, actionable error messages; metrics and tracing for critical paths.
+- Performance: set budgets (TTFB, LCP, API latency); use lazy loading, pagination, and streaming where appropriate.
+- Security & privacy: authn/authz enforced at boundaries; input validation at edges; follow OWASP Top 10; least privilege for secrets and services.
+- Accessibility: adhere to WCAG for UI; keyboard navigation and ARIA where applicable.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow & Quality Gates
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Branching & reviews: short‑lived feature branches; small PRs; require review with architectural and SOLID checks.
+- Testing: unit tests for domain and utils; integration tests for adapters and contracts; E2E for critical journeys; include regression tests for bugs.
+- CI/CD: lint, type checks, tests, and build on PR; block merge on failures; produce artifacts with provenance and changelogs.
+- Definition of Done: tests added/updated; docs and API contracts updated; telemetry and alerts configured for new critical paths.
+- Documentation: update readmes per feature; record decisions in lightweight ADRs; keep examples runnable.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- This constitution supersedes conflicting local practices. Exceptions require an ADR with rationale and a rollback plan.
+- Changes to core principles or architecture require PR review by maintainers and version bump of this document.
+- All reviews verify SOLID adherence, modular boundaries, observability, and performance/security budgets.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-11-01 | **Last Amended**: 2025-11-01
+
