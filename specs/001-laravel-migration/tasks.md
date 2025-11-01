@@ -61,11 +61,11 @@ description: "Concrete task list for Laravel migration with Docker, Blade, Boots
 
 ## Phase 3: User Story 1 — Public Site Parity (P1)
 
-- [ ] T0300 [US1] Routes in `routes/web.php` for: `/`, `/about`, `/packages`, `/packages/{slug}`, `/destinations`, `/destinations/{slug}`, `/gallery`, `/contact`
-- [ ] T0301 [US1] Controllers in `app/Http/Controllers/Public/{HomeController,AboutController,PackageController,DestinationController,GalleryController,ContactController}.php`
-- [ ] T0302 [US1] Views in `resources/views/public/{home,about,packages/index,packages/show,destinations/index,destinations/show,gallery,contact}.blade.php`
-- [ ] T0303 [P] [US1] Navbar/footer with active state; responsive Bootstrap layout
-- [ ] T0304 [US1] Feature tests (Pest) for each route returning 200 and custom 404
+- [x] T0300 [US1] Routes in `routes/web.php` for: `/`, `/about`, `/packages`, `/packages/{slug}`, `/destinations`, `/destinations/{slug}`, `/gallery`, `/contact`
+- [x] T0301 [US1] Controllers in `app/Http/Controllers/Web/{HomeController,AboutController,PackageController,DestinationController,GalleryController,ContactController}.php`
+- [x] T0302 [US1] Views in `resources/views/public/{home,about,packages/index,packages/show,destinations/index,destinations/show,gallery,contact}.blade.php`
+- [x] T0303 [P] [US1] Navbar/footer with active state; responsive Bootstrap layout
+- [x] T0304 [US1] Feature tests (Pest) for each route returning 200 and custom 404
 
 **Checkpoint**: Public navigation and pages render with sample content
 
@@ -141,4 +141,3 @@ description: "Concrete task list for Laravel migration with Docker, Blade, Boots
 3) Exact pages/sections to mirror from the current site (final nav order)? Any pages to drop/add?
 4) Do you want multilingual support or a blog/news section in scope?
 5) Prefer Laravel Sail for dev environment, or keep custom docker-compose approach?
-

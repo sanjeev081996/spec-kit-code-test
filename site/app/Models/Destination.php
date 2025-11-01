@@ -12,5 +12,9 @@ class Destination extends Model
     protected $fillable = [
         'name', 'slug', 'description', 'hero_image', 'is_published'
     ];
-}
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+}

@@ -12,5 +12,9 @@ class Package extends Model
     protected $fillable = [
         'title', 'slug', 'summary', 'description', 'price_from', 'duration', 'is_published'
     ];
-}
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+}
