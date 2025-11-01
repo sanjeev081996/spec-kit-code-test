@@ -17,25 +17,25 @@ description: "Concrete task list for Laravel migration with Docker, Blade, Boots
 
 ## Phase 0: Dev Environment (Docker + Tooling)
 
-- [ ] T0001 [P] Create `docker` folder and add `docker-compose.yml` with services: app (php-fpm), web (nginx), db (mysql/mariadb), mailhog
-- [ ] T0002 [P] Add `Dockerfile` for app with PHP 8.3, extensions: pdo_mysql, intl, zip, gd/imagick; install Composer
-- [ ] T0003 Add nginx vhost config to serve `public/` (mount into web container)
-- [ ] T0004 Bring up stack: `docker compose up -d` (or Sail alternative)
-- [ ] T0005 Run Composer (in container): `composer create-project laravel/laravel .` (skip if project pre-existing)
-- [ ] T0006 Generate app key: `php artisan key:generate`
-- [ ] T0007 [P] Add Node/Vite deps: `npm i -D vite laravel-vite-plugin bootstrap @popperjs/core jquery`
-- [ ] T0008 Verify Vite dev server and PHP app respond locally
+- [x] T0001 [P] Create `docker` folder and add `docker-compose.yml` with services: app (php-fpm), web (nginx), db (mysql/mariadb), mailhog
+- [x] T0002 [P] Add `Dockerfile` for app with PHP 8.3, extensions: pdo_mysql, intl, zip, gd/imagick; install Composer
+- [x] T0003 Add nginx vhost config to serve `public/` (mount into web container)
+- [x] T0004 Bring up stack: `docker compose up -d` (or Sail alternative)
+- [x] T0005 Run Composer (in container): `composer create-project laravel/laravel .` (skip if project pre-existing)
+- [x] T0006 Generate app key: `php artisan key:generate`
+- [x] T0007 [P] Add Node/Vite deps: `npm i -D vite laravel-vite-plugin bootstrap @popperjs/core jquery`
+- [x] T0008 Verify Vite dev server and PHP app respond locally
 
 ---
 
 ## Phase 1: Setup
 
-- [ ] T0100 Configure `.env` (APP_NAME, APP_URL, DB creds, MAIL to Mailhog)
-- [ ] T0101 Run `php artisan storage:link`
-- [ ] T0102 Create base layout `resources/views/layouts/app.blade.php` with `@vite(['resources/js/app.js','resources/css/app.css'])`
-- [ ] T0103 [P] Create shared partials: `resources/views/partials/{header,footer,meta}.blade.php`
-- [ ] T0104 [P] Wire assets: `resources/js/app.js` (import bootstrap, popper, jquery); `resources/css/app.css` (import bootstrap CSS)
-- [ ] T0105 Add health and 404 routes in `routes/web.php`; create `resources/views/errors/404.blade.php`
+- [x] T0100 Configure `.env` (APP_NAME, APP_URL, DB creds, MAIL to Mailhog)
+- [x] T0101 Run `php artisan storage:link`
+- [x] T0102 Create base layout `resources/views/layouts/app.blade.php` with `@vite(['resources/js/app.js','resources/css/app.css'])`
+- [x] T0103 [P] Create shared partials: `resources/views/partials/{header,footer,meta}.blade.php`
+- [x] T0104 [P] Wire assets: `resources/js/app.js` (import bootstrap, popper, jquery); `resources/css/app.css` (import bootstrap CSS)
+- [x] T0105 Add health and 404 routes in `routes/web.php`; create `resources/views/errors/404.blade.php`
 
 ---
 
