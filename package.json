@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "test:e2e": "playwright test -c e2e/playwright.config.ts",
+    "test:e2e:headed": "playwright test -c e2e/playwright.config.ts --headed",
+    "test:e2e:phase0": "playwright test -c e2e/playwright.config.ts e2e/phase-0.spec.ts",
+    "test:e2e:phase1": "playwright test -c e2e/playwright.config.ts e2e/phase-1.spec.ts e2e/phase-1-ui.spec.ts",
+    "test:e2e:phase3": "playwright test -c e2e/playwright.config.ts e2e/phase-3-public.spec.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}
